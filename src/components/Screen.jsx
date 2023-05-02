@@ -2,10 +2,13 @@ import Section from './Section.jsx'
 
 function Screen(Props) {
     let test = 'testLol'
+    let props = {
+        title:'myTitle'
+    }
 
     return (
         <div className="mainScreen">
-            <Section />
+            <Section Props={props} />
         </div>
     )
 }
