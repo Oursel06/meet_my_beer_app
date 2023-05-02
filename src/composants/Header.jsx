@@ -3,9 +3,8 @@ import biereheadshot from "../image/biereheadshot.png"
 
 function Header() {
     return (
-        <div>
+        <div className="header">
             <img src={biereheadshot} alt="biere"></img>
-            <p>test</p>
         </div>
     );
 }
