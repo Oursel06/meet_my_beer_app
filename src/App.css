@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding-top: 2vh;
   box-sizing: border-box;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .App {
   text-align: center;
@@ -101,7 +101,10 @@ body {
   box-shadow: inset 0px 0px 20px lightgray;
 }
 
-
+.small {
+  width: 50%;
+  height: 50%;
+}
 .navButtonContainer {
   display:flex;
 }

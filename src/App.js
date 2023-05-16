@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import Screen from './components/Screen.jsx'
-import NavBar from './components/NavBar.jsx';
+import Screen from './components/Views/Screen.jsx'
+import NavBar from './components/Views/NavBar.jsx';
 import { useEffect, useState } from 'react';
-import Brasseries from './components/Brasseries';
+import Brasseries from './components/Views/Brasseries';
 
 // test
 function App() {

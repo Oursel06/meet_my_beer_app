@@ -1,6 +1,6 @@
-import NavBtn from './NavBtn.jsx'
+import NavBtn from '../Models/NavBtn.jsx'
 
-function Screen(Props) {
+function NavBar(Props) {
     let test = 'testLol'
 
     return (
@@ -11,4 +11,4 @@ function Screen(Props) {
     )
 }
 
-export default Screen
+export default NavBar

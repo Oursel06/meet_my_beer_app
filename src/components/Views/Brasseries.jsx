@@ -1,5 +1,5 @@
 import React from "react";
-import Brasseriecard from "./Brasseriecard";
+import Brasseriecard from "../Models/Brasseriecard";
 
 function Brasseries({ brass }) {
     const brasseries = [];
