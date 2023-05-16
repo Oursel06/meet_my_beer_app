@@ -1,4 +1,4 @@
-function Screen(Props) {
+function NavBtn(Props) {
     let test = 'testLol'
 
     return (
@@ -12,4 +12,4 @@ function Screen(Props) {
     )
 }
 
-export default Screen
+export default NavBtn
