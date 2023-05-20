@@ -9,27 +9,11 @@ import Bieres from 'components/Views/Bieres';
 // test
 function App() {
 
-  const [brasserieData, setBrasserieData] = useState([]);
-  // const [search, searchText] = useState("");
-
-  useEffect(() => {
-    function fetchBrasserie() {
-      fetch('https://127.0.0.1:8000/brasseries')
-        .then(response => {
-          return response.json();
-        })
-        .then(result => {
-          setBrasserieData(result["hydra:member"])
-        });
-    }
-    fetchBrasserie();
-  }, []);
-
   return (
     <div className="App">
       {/* <Screen /> */}
-      {/* <Brasseries brass={brasserieData} /> */}
-      <Bieres />
+      {/* <Bieres /> */}
+      <Brasseries />
       <NavBar />
     </div>
   );

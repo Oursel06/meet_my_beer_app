@@ -171,8 +171,8 @@ body {
 }
 
 .beer-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .beer-card h2 {
@@ -210,6 +210,46 @@ body {
 
 .beer-card {
   animation: fadeIn 0.5s ease-in-out;
+}
+
+/* BRASSERIES */
+.brasserie-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.brasserie-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.brasserie-card h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.brasserie-card p {
+  margin-bottom: 10px;
+}
+
+.brasserie-card a {
+  display: block;
+  margin-bottom: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.brasserie-card a:hover {
+  text-decoration: underline;
+}
+
+.brasserie-card:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes btnAnim {
