@@ -4,6 +4,7 @@ import Screen from './components/Views/Screen.jsx'
 import NavBar from './components/Views/NavBar.jsx';
 import { useEffect, useState } from 'react';
 import Brasseries from './components/Views/Brasseries';
+import Bieres from 'components/Views/Bieres';
 
 // test
 function App() {
@@ -18,7 +19,6 @@ function App() {
           return response.json();
         })
         .then(result => {
-          // console.log(result["hydra:member"][0])
           setBrasserieData(result["hydra:member"])
         });
     }
@@ -27,8 +27,9 @@ function App() {
 
   return (
     <div className="App">
-      <Screen />
-      <Brasseries brass={brasserieData} />
+      {/* <Screen /> */}
+      {/* <Brasseries brass={brasserieData} /> */}
+      <Bieres />
       <NavBar />
     </div>
   );
