@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react'
 function Screen(Props) {
 
     let props = {
-        title:"Connexion"
+        title: "Connexion"
     }
-    let page = <Login props={props}/>
+    let page = <Login props={props} />
     let size = "small"
 
     const [dreamBeer, setDreamBeer] = useState({})
