@@ -71,13 +71,6 @@ const MatchForm = ({userDreamBeer}) => {
       })
       userDreamBeer(obj) 
     }
-    // {
-    //   type:{value:dreamBeer[0],weight:dreamBeer[4]},
-    //   gout:{value:dreamBeer[1],weight:dreamBeer[5]},
-    //   amertume:{value:dreamBeer[2],weight:dreamBeer[6]},
-    //   degres:{value:dreamBeer[3],weight:dreamBeer[7]}
-    // }
-
   }
   
 

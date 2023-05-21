@@ -12,9 +12,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Screen /> */}
+      <Screen />
       {/* <Bieres /> */}
-      <Brasseries />
+      {/* <Brasseries /> */}
       <NavBar />
     </div>
   );
