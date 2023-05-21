@@ -77,7 +77,7 @@ const FormStepModel = ({props, value, weight}) => {
                 </div>
             </div>
             <div className="stepQ">
-                <p className="stepQ-desc">Définissez l'importance que vous souhaitez accorder à ce choix.<br/><span class="unbolded">(1=sans importance, 10=indispensable)</span></p>
+                <p className="stepQ-desc">Définissez l'importance que vous souhaitez accorder à ce choix.<br/><span className="unbolded">(1=sans importance, 10=indispensable)</span></p>
                 <div className="rangeSlider">
                 <div className="rangeSliderValue">{weightValue}</div>
                     <RangeSliderModel

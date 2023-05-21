@@ -4,7 +4,7 @@ import FormStepModel from "components/Models/FormStepModel";
 
 
 
-const MatchForm = () => {
+const MatchForm = ({userDreamBeer}) => {
   
   const [answerValue, setAnswerValue] = useState('')
   const [weightValue, setWeightValue] = useState('');
@@ -47,9 +47,41 @@ const MatchForm = () => {
     }
   }
 
+  const throwDreamBeer = () => {
 
+    if (dreamBeer.length < 2) {
+      console.log('dream beer unset yet')
+    }
+    else {
+      const obj = {
+        type:{value:'',weight:''},
+        gout:{value:'',weight:''},
+        amertume:{value:'',weight:''},
+        degres:{value:'',weight:''}
+      }
+      
+      dreamBeer.forEach((tab,i) => {
+        console.log(i)
+        switch(i){
+          case 0 :
+            obj.type.value = tab[0];obj.gout.value = tab[1];obj.amertume.value = tab[2];obj.degres.value = tab[3];break
+          case 1 :
+            obj.type.weight = tab[0];obj.gout.weight = tab[1];obj.amertume.weight = tab[2];obj.degres.weight = tab[3];break
+        }
+      })
+      userDreamBeer(obj) 
+    }
+    // {
+    //   type:{value:dreamBeer[0],weight:dreamBeer[4]},
+    //   gout:{value:dreamBeer[1],weight:dreamBeer[5]},
+    //   amertume:{value:dreamBeer[2],weight:dreamBeer[6]},
+    //   degres:{value:dreamBeer[3],weight:dreamBeer[7]}
+    // }
 
-  useEffect(()=> steper === 4 ? console.log("It's a match !"+dreamBeer) : setCurrentStep(stepsArrRef.current[steper]),[dreamBeer])
+  }
+  
+
+  useEffect(()=> steper === 4 ? throwDreamBeer() : setCurrentStep(stepsArrRef.current[steper]),[dreamBeer])
 
   useEffect(()=>{
 
