@@ -10,7 +10,6 @@ const RadioBtnModel = ({props, onClick}) => {
 
     return <div onClick={testing} className={"radioElemContainer radioElemContainer"+radioElemValue}>
         <div className="radioElemContent">
-            <div className={"radioElemColor "+radioElemValue}>cadre coloré</div>
             <div className="radioElemValue">{radioElemValue}</div>
         </div>
     </div>
