@@ -1,108 +1,107 @@
-import React, { useState, useEffect } from "react";
-import StepForm from "../../classes.js";
+import React, { useState, useEffect, useRef } from "react";
 import steps from "../../steps.js";
 import FormStepModel from "components/Models/FormStepModel";
 
+
+
 const MatchForm = () => {
-  const [finalResults, setFinalResults] = useState([]);
-  const [result, setResult] = useState("");
-  const [counter, setCounter] = useState(1);
-  const [testValue, setTestValue] = useState("");
-  const [weightValue, setWeightValue] = useState("");
-  const [currentScreen, setCurrentScreen] = useState(null);
+  
+  const [answerValue, setAnswerValue] = useState('')
+  const [weightValue, setWeightValue] = useState('');
+  const [btnLabel, setButtonLabel] = useState('Continuer')
 
-  const handleChange = (value) => {
-    setTestValue(value);
+  const handleAnswer = (answer) => {
+    console.log(answer);
+    setAnswerValue(answer)
   };
-
   const handleWeightChange = (value) => {
+    console.log(value/10);
     setWeightValue(value);
   };
 
-  const increaseCounter = () => {
-    setCounter((prevCounter) => prevCounter + 1);
-    return counter;
-  };
-
-  const getMatch = () => {
-    
-    for (let i = 1; i < 5; i++) {
-      console.log(i)
-      console.log("CHOIX => "+ localStorage.getItem("Q" + i));
-    }
-  };
-  // const dreamBeer = {}
-  const stepForward = () => {
-    if (testValue !== "" && weightValue !== "") {
-      console.log("forwarding");
-      console.log(counter);
-      
-
-      if (counter < 3 || counter === 4 ) {
-        setResult((prevResult) => `${prevResult}Q${counter} : ${testValue} ${weightValue},`);
-        console.log(finalResults);
-        const obj = {
-          Q: `Q${counter}`,
-          value: testValue,
-          weight: weightValue,
-        };
-        localStorage.setItem(`Q${counter}`,obj)
-        setFinalResults((prevResults) => [...prevResults, obj]);
-        console.log(finalResults);
-        console.log(result);
-        console.log(stepsArr[counter]);
-        setCurrentScreen(stepsArr[counter]);
-      }
-
-      if (counter === 3) {
-        setCurrentScreen(stepsArr[counter]);
-        setResult((prevResult) => `${prevResult}Q${counter} : ${testValue} ${weightValue},`);
-        const obj = {
-          Q: `Q${counter}`,
-          value: testValue,
-          weight: weightValue,
-        };
-        localStorage.setItem(`Q${counter}`,obj)
-        setFinalResults((prevResults) => [...prevResults, obj]);
-        const stepBtn = document.getElementById("StepBtn");
-        stepBtn.textContent = "Matcher !";
-        stepBtn.addEventListener("click", getMatch);
-      }
-      increaseCounter();
-      console.log(counter);
-      setTestValue("");
-      setWeightValue("");
-    } else {
-      let alert = document.getElementsByClassName("alert")[0];
-      alert.textContent = "Merci de faire un choix avant de passer à l'étape suivante";
-      setTimeout(() => {
-        alert.textContent = "";
-      }, 5000);
-    }
-  };
+  const mySteps = steps;
+  const stepsArrRef = useRef([]);
 
   useEffect(() => {
-    if (counter === 4) {
-      getMatch();
-    }
-  }, [counter]);
+    console.log('in stepArr construction')
+    stepsArrRef.current = mySteps.map((step) => (
+      <FormStepModel props={step} value={handleAnswer} weight={handleWeightChange} />
+    ));
+  }, [mySteps]);
 
-  const mySteps = steps;
-  const stepsArr = mySteps.map((step) => (
-    <FormStepModel props={step} value={handleChange} weight={handleWeightChange} />
-  ));
-  if(currentScreen === null ) setCurrentScreen(stepsArr[counter - 1])
+
+
+  const [steper,setSteper] = useState(0)
+  const [currentStep,setCurrentStep] = useState(stepsArrRef.current[0])
+  const [dreamBeer, setDreamBeer] = useState([]) 
+  const [dreamBeerValue, setDreamBeerValue] = useState([])
+  const [dreamBeerWeight,setDreamBeerWeight] = useState([])
+
+  const upSteper = () => {
+    if(answerValue !== '' && weightValue !== ''){
+      setSteper((steper) => steper + 1)
+      console.log('step up')
+    }
+    else{
+      alert('Merci de selectionner vos réponses avant de continuer')
+    }
+  }
+
+
+
+  useEffect(()=> steper === 4 ? console.log("It's a match !"+dreamBeer) : setCurrentStep(stepsArrRef.current[steper]),[dreamBeer])
+
+  useEffect(()=>{
+
+    if( dreamBeerValue.length > 0 && dreamBeerWeight.length > 0 ) {
+
+      switch(steper) {
+        case 1 :
+        case 2 :
+          setDreamBeer([]);
+          break;
+        case 3 :
+          setButtonLabel('Matcher !')
+          setDreamBeer([]);
+          break;
+        case 4 :
+          setDreamBeer(prev=>([...prev, dreamBeerValue,dreamBeerWeight]));
+          break;
+      }
+    }
+  },[dreamBeerValue, dreamBeerWeight])
+
+
+  useEffect(()=>{
+    console.log('Steper effect triggered ' + steper)
+
+    if(steper === 0){
+      setCurrentStep(stepsArrRef.current[steper])
+    }
+    else{
+      const objValue = [answerValue];
+      const objWeight = [weightValue]
+      if (answerValue !== '' && weightValue !== '') {
+        setDreamBeerValue(prev => ([...prev, objValue])) 
+        setDreamBeerWeight(prev=>([...prev,objWeight])) 
+      }
+      else console.log('no values'); 
+    }
+
+    return () => {
+      console.log('wait while i clean up')
+      setAnswerValue('')
+      setWeightValue('')
+    }
+  },[steper])
 
   return (
-    <div>
-      <div className="alert"></div>
-      {currentScreen}
-      <span>{testValue}</span>
-      <span>{weightValue}</span>
-      <button id="StepBtn" onClick={stepForward}>
-        tester
-      </button>
-      <span>{result}</span>
+    <div className="fullStepContainer">
+      <div className="stepCounter">étape(s): {steper+1}/4</div>
+      {currentStep}
+      <div className="stepBtn" onClick={upSteper}>
+        {btnLabel}
+      </div>
     </div>
   );
 };

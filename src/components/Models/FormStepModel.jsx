@@ -1,7 +1,8 @@
 import InputModel from "./InputModel"
+import  "../styles/FormStepModel.css"
 import RangeSliderModel from "./RangeSliderModel";
 import RadioBtnModel from "./RadioBtnModel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const FormStepModel = ({props, value, weight}) => {
@@ -57,18 +58,13 @@ const FormStepModel = ({props, value, weight}) => {
         classes:'inputModel'
     }
 
-    const [weightValue, setWeightValue] = useState('');
+    const [weightValue, setWeightValue] = useState(5);
     const handleWeightChange = (event) => {
         setWeightValue(event.target.value);
         weight(event.target.value)
     };
-    const valueProps = {
-        radioElemValue:'Blonde',
-    }
 
-    
-
-    return <div>
+    return <div className="stepContainer">
         <div className="stepHeader">
             <h2 className="stepTitle">{stepTitle}</h2>
             <p className="stepDesc">{stepDesc}</p>
@@ -76,18 +72,20 @@ const FormStepModel = ({props, value, weight}) => {
         <div className="stepContent">
             <div className="stepQ">
                 <p className="stepQ-desc">Cliquez sur votre choix</p>
-                <div>
+                <div className="stepAnswers">
                     {elemStep1}
                 </div>
             </div>
             <div className="stepQ">
-                <p className="stepQ-desc">Définissez l'importance que vous souhaitez accorder à ce choix.<br/>(1=sans importance, 10=indispensable)</p>
-                <RangeSliderModel
-                    props={weightProps}
-                    value={weightValue}
-                    onChange={handleWeightChange}
-                />
-                <span>{weightValue}</span>
+                <p className="stepQ-desc">Définissez l'importance que vous souhaitez accorder à ce choix.<br/><span class="unbolded">(1=sans importance, 10=indispensable)</span></p>
+                <div className="rangeSlider">
+                <div className="rangeSliderValue">{weightValue}</div>
+                    <RangeSliderModel
+                        props={weightProps}
+                        value={weightValue}
+                        onChange={handleWeightChange}
+                    />
+                </div>
             </div>
         </div>
     </div>
