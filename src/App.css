@@ -225,9 +225,6 @@ body {
   
 }
 
-
-
-
 /* BIERES */
 .beer-card {
   width: 300px;
@@ -320,11 +317,6 @@ body {
 .brasserie-card:last-child {
   margin-bottom: 0;
 }
-
-
-
-
-
 
 .fullStepContainer {
   width: 100%;
