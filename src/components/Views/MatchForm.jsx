@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import steps from "../../steps.js";
 import FormStepModel from "components/Models/FormStepModel";
+import NavBar from './NavBar.jsx';
 
 
 

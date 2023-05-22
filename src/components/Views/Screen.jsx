@@ -10,9 +10,6 @@ import BeerCard from './BeerCard.jsx';
 import Home from './Home.jsx';
 
 function Screen({beerData}) {
-    let props = {title: "Connexion"}
-    let page = <Login props={props} />
-    let size = "small"
     let navigate = useNavigate()
     const [dreamBeer, setDreamBeer] = useState({})
     const [wrappedBeer,setWrappedBeer] = useState([])
@@ -29,12 +26,6 @@ function Screen({beerData}) {
         Object.keys(dreamBeer).length > 0 ? getBeerinfo() : console.log('no dream beer found')
 
     },[dreamBeer])
-
-    page = <MatchForm userDreamBeer={handleDreamBeer}/>
-    let componentClasses = "section "+size
-
-
-    const [currentSection,setCurrentSection] = useState(<MatchForm userDreamBeer={handleDreamBeer}/>) 
 
     return (
         <div className="mainScreen">

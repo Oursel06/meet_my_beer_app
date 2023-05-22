@@ -1,16 +1,15 @@
 import {useState} from 'react'
+import {useLocation} from 'react-router-dom'
 import Login from './Login.jsx'
 import Register from './Register.jsx'
 
-function Home({}) {
-    const [shown,setShown] = useState(<Login props={{title:'connexion'}} />)
-    const [btnLabel,setBtnLabel] = useState("inscription")
-    
+function Home({isConnected}) {
+    const [shown,setShown] = useState(<Login props={{title:"connexion"}} />)
+    const [btnLabel,setBtnLabel] = useState("s'inscrire")
+    const location = useLocation()
     const handleShown = () => {
-        const test = btnLabel == 'inscription'
-        console.log(test)
-        btnLabel == 'inscription' ? setShown(<Register props={{title:'inscription'}}/>) : setShown(<Login props={{title:'connexion'}}/>)
-        btnLabel == 'inscription' ? setBtnLabel('connexion') : setBtnLabel('inscription') 
+        btnLabel == "s'inscrire" ? setShown(<Register props={{title:'inscription'}}/>) : setShown(<Login props={{title:"connexion"}}/>)
+        btnLabel == "s'inscrire" ? setBtnLabel("se connecter") : setBtnLabel("s'inscrire") 
     }
 
 
