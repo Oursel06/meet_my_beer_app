@@ -6,6 +6,8 @@ import { Outlet, Routes ,Route, BrowserRouter, Link, useNavigate, redirect} from
 import NavBar from './NavBar.jsx';
 import Brasseries from './Brasseries.jsx';
 import MatchResult from './MatchResult.jsx';
+import BeerCard from './BeerCard.jsx';
+import Home from './Home.jsx';
 
 function Screen({beerData}) {
     let props = {title: "Connexion"}
@@ -38,11 +40,11 @@ function Screen({beerData}) {
         <div className="mainScreen">
             
                 <Routes>
-                    <Route path='/' element={<Login props={props} />}>
+                    <Route path='/' element={<Home/>}>
                     </Route>
                     <Route path='/form' element={<MatchForm userDreamBeer={handleDreamBeer}/>}></Route>
                     <Route path='/match' element={<MatchResult beerData={beerData} userChoices={wrappedBeer}/>}/>
-
+                    <Route path='/biere' element={<BeerCard/>}/>
                     <Route path='/brasseries' element={<Brasseries />}></Route>
                 </Routes>
                 {/* <Outlet page={currentSection} classes={componentClasses} /> */}

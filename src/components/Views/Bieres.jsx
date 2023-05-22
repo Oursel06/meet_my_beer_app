@@ -79,7 +79,7 @@ const Bieres = () => {
                     <p>Degrés: {beer.nbDegres}</p>
                     <p>Saison: {beer.saison ? 'Oui' : 'Non'}</p>
                     <p>Couleur: {beer.couleurs.join(', ')}</p>
-                    <p class="saveurs">Saveurs: {beer.saveurs.join(', ')}</p>
+                    <p class="saveurs">Saveurs: {beer.saveur.join(', ')}</p>
                     <p>Amertume: {beer.amertume}</p>
                 </div>
             ))}

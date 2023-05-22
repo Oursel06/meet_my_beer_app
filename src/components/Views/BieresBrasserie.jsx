@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Link} from 'react-router-dom'
 
 const BieresBrasserie = ({ bieres }) => {
     const [biereList, setBiereList] = useState([]);
@@ -15,17 +16,17 @@ const BieresBrasserie = ({ bieres }) => {
 
     return (
         <div>
-            {biereList.length > 1 ? (
+            {biereList.length > 0 ? (
                 <div>
                     <h3>{biereList.length} Bières proposées :</h3>
                     <ul>
                         {biereList.map(biere => (
-                            <li key={biere.id}>{biere.nom}</li>
+                            <Link to='/biere' state={biere} key={biere.id}>{biere.nom}</Link>
                         ))}
                     </ul>
                 </div>
             ) : (
-                <h3>Bière proposée : {biereList[0]?.nom}</h3>
+                <h3>aucune bière proposée</h3>
             )}
         </div>
     );

@@ -71,7 +71,7 @@ function App() {
 
                 return {
                     ...beer,
-                    saveurs: biereSaveur.map((flavor) => flavor.libelle),
+                    saveur: biereSaveur.map((flavor) => flavor.libelle),
                     couleurs: biereCouleur.map((coul) => coul.libelle),
                 };
             });
