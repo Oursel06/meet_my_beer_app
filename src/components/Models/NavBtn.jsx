@@ -1,14 +1,16 @@
-function NavBtn(Props) {
+import {Link} from 'react-router-dom'
+
+function NavBtn({route,btnName}) {
     let test = 'testLol'
 
     return (
-        <div className="navButtonContainer">
+        <Link to={route} className="navButtonContainer">
             <button className="navButton">
                 <div className="filtre"></div>
-                <p>rencontre</p>
+                <p>{btnName}</p>
             </button>
             <div className="btnContainer"></div>
-        </div>
+        </Link>
     )
 }
 

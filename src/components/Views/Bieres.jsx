@@ -43,7 +43,7 @@ const Bieres = () => {
         fetchcouleurs();
     }, []);
 
-    // On ajoute dans un autre tableau toutes les informations du tableau bière en remplacant l'id couleur et sdaveur par leur libellé en confrontant les tableaux concernés
+    // On ajoute dans un autre tableau toutes les informations du tableau bière en remplacant l'id couleur et saveur par leur libellé en confrontant les tableaux concernés
     useEffect(() => {
         const mapsaveursTobieres = () => {
             const biereData = bieres.map((beer) => {

@@ -121,7 +121,7 @@ const MatchForm = ({userDreamBeer}) => {
   },[steper])
 
   return (
-    <div className="fullStepContainer">
+    <div className="fullStepContainer section small">
       <div className="stepCounter">étape(s): {steper+1}/4</div>
       {currentStep}
       <div className="stepBtn" onClick={upSteper}>
