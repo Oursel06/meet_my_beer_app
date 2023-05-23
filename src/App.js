@@ -1,41 +1,69 @@
-import logo from './logo.svg';
-import './style/App.css';
-import Header from "./composants/Header"
+
+import './App.css';
+import Screen from './components/Views/Screen.jsx'
 import { useEffect, useState } from 'react';
-import Brasserie from './composants/Brasseries';
+import { BrowserRouter } from "react-router-dom";
 
+
+// test
 function App() {
+  const [bieres, setBieres] = useState([]);
 
-  // const [biereData, setBiereData] = useState([]);
-  const [brasserieData, setBrasserieData] = useState([]);
-  const [search, searchText] = useState("");
+      // Récupération et stockage des bières, saveurs et couleurs
+      useEffect(() => {
+        const fetchBieres = async () => {
+            try {
+                const response = await fetch('https://meetmybeerapi.osc-fr1.scalingo.io/api/bieres');
+                const data = await response.json();
+                setBieres(data);
+            } catch (error) {
+                console.error('Erreur lors de la récupération des données de l\'API "biere"', error);
+            }
+        };
 
-  useEffect(() => {
-    function fetchBrasserie() {
-      fetch('https://127.0.0.1:8000/brasseries')
-        .then(response => {
-          return response.json();
+        fetchBieres();
+    }, []);
+
+
+    const fetchSaveurs = async (url,biere) => {
+        try {
+            const response = await fetch(`${url}${biere.saveurs[0]}`);
+            const data = await response.json();
+            biere['saveur'] = data.libelle
+        } catch (error) {
+            console.error('Erreur lors de la récupération des données de l\'API "saveurs"', error);
+        }
+    };
+
+    const fetchcouleurs = async (url,biere) => {
+        try {
+            const response = await fetch(`${url}${biere.couleur}`);
+            const data = await response.json();
+            biere['couleurs'] = data.libelle
+        } catch (error) {
+            console.error('Erreur lors de la récupération des données de l\'API "couleurs"', error);
+        }
+    };
+
+
+    // On ajoute dans un autre tableau toutes les informations du tableau bière en remplacant l'id couleur et saveur par leur libellé en confrontant les tableaux concernés
+    useEffect(() => {
+        const url = 'https://meetmybeerapi.osc-fr1.scalingo.io'
+
+        bieres.forEach(biere => {
+            fetchSaveurs(url,biere)
+            fetchcouleurs(url,biere)  
+            console.log(biere)
         })
-        .then(result => {
-          // console.log(result["hydra:member"][0])
-          setBrasserieData(result["hydra:member"])
-        });
-    }
-    fetchBrasserie();
-  }, []);
-
-  return (
-    <div className="app">
-      <Header />
-      <Brasserie brass={brasserieData} />
-    </div>
-  );
+    }, [bieres]);
 
 
 
   return (
     <div className="App">
-      <Header />
+      <BrowserRouter>
+        <Screen beerData={bieres} />
+      </BrowserRouter>
     </div>
   );
 }

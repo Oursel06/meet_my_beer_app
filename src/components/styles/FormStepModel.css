@@ -1,0 +1,146 @@
+.stepContainer {
+    width: 100%;
+    height: 100%;
+    overflow-y:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.stepDesc {
+    margin:0;
+}
+
+.stepQ-desc {
+    text-align: start;
+    font-weight: bold;
+}
+.unbolded {
+    font-weight: initial;   
+}
+.stepAnswers {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vmin;
+    justify-content: center;
+}
+.radioElemContainer {
+    width:30% ;
+    height: 8vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vmin;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.27);
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.35);
+}
+.radioElemContainer:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.selected {
+    box-shadow: 0px 0px 15px rgba(249, 60, 139, 0.45);
+}
+
+.rangeSlider {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.rangeSliderValue {
+    width: 3vmin;
+    height: 3vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.inputModel {
+    width: 70%;
+}
+
+.cannette {
+ width: 300px;
+}
+
+.beerInfo {
+    display: flex;
+    height: 30%;
+    width: 100%;
+    padding: 0 5%;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.beerDetails {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 1%;
+}
+
+.beerDetail {
+    display: flex;
+    justify-content: space-between;
+}
+
+.classicBtn {
+    width: 250px;
+    height: 50px;
+    border-radius: 10px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.779);
+    color:white;
+}
+
+.valid {
+    background-color: rgb(251, 0, 255,0.6);
+}
+
+.valid:hover {
+    background-color: rgb(251, 0, 255,0.8);
+}
+
+.util {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: auto;
+}
+.util:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.loginDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.classicInput {
+    width: 40%;
+    height: 30px;
+    border:none;
+    margin: 10px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.666);
+}
+
+
+
+
+
+
+
+
+
+
+
+

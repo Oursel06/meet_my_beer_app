@@ -1,5 +1,5 @@
 {
-  "name": "meetmybeer",
+  "name": "meet_my_beer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-router-dom": "^6.11.2"
   }
 }
