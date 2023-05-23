@@ -14,9 +14,9 @@ function Home({isConnected}) {
 
 
     return (
-        <div >
+        <div className="section">
             {shown}
-            <div onClick={handleShown}>{btnLabel}</div>
+            <div className="classicBtn util" onClick={handleShown}>{btnLabel}</div>
         </div>
     )
 }

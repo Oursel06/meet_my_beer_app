@@ -15,7 +15,7 @@ const BieresBrasserie = ({ bieres }) => {
     }, [bieres]);
 
     return (
-        <div>
+        <div className="section">
             {biereList.length > 0 ? (
                 <div>
                     <h3>{biereList.length} Bières proposées :</h3>

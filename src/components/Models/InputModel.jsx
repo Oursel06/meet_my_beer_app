@@ -5,7 +5,7 @@ const InputModel = ({value, onChange, props}) => {
     const classes = props.classes
 
     return (
-        <input className={classes}
+        <input className="classicInput"
           type={type}
           placeholder={placeholder}
           value={value}

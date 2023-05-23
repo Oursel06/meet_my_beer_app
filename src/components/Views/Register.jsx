@@ -62,7 +62,7 @@ function Register({props}) {
                 value={passwdValue}
                 onChange={handlePasswdChange}
             />
-            <div onClick={registerUser}>Confirmer</div>
+            <div className="classicBtn valid" onClick={registerUser}>Confirmer</div>
         </div>
     )
 }

@@ -62,7 +62,7 @@ function Login({props}) {
                 value={passwdValue}
                 onChange={handlePasswdChange}
             />
-            <div onClick={loginUser}>Confirmer</div>
+            <div className="classicBtn valid" onClick={loginUser}>Confirmer</div>
         </div>
     )
 }

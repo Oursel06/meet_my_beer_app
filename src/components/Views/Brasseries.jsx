@@ -12,7 +12,7 @@ const BrasserieComponent = () => {
     }, []);
 
     return (
-        <div>
+        <div className='section'>
             {brasserie.map(brasserie => (
                 <div className="brasserie-card" key={brasserie.id}>
                     <h1>{brasserie.nom}</h1>
