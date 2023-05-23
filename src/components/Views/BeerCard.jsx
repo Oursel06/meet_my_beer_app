@@ -1,18 +1,18 @@
-import {useState, useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
-import {ratapignata} from '../../assets/ratapignata.png'
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { ratapignata } from '../../assets/ratapignata.png'
 
-function BeerCard({}) {
+function BeerCard({ }) {
     const location = useLocation()
     const biere = location.state
     const url = 'https://meetmybeerapi.osc-fr1.scalingo.io'
-    const [saveurs,setSaveurs] = useState([])
-    const [couleurs,setCouleurs] = useState([])
+    const [saveurs, setSaveurs] = useState([])
+    const [couleurs, setCouleurs] = useState([])
 
 
     const fetchSaveurs = async () => {
         try {
-            const response = await fetch(`${url}${biere.saveurs[0]}`);
+            const response = await fetch(`${url}${biere.saveurs[0]}`, { mode: "cors" });
             const data = await response.json();
             setSaveurs(data);
         } catch (error) {
@@ -22,7 +22,7 @@ function BeerCard({}) {
 
     const fetchcouleurs = async () => {
         try {
-            const response = await fetch(`${url}${biere.couleur}`);
+            const response = await fetch(`${url}${biere.couleur}`, { mode: "cors" });
             const data = await response.json();
             setCouleurs(data);
         } catch (error) {
@@ -30,19 +30,19 @@ function BeerCard({}) {
         }
     };
 
-    useEffect(() =>{
-        
+    useEffect(() => {
+
         fetchcouleurs()
         fetchSaveurs()
-        
-    },[biere])
+
+    }, [biere])
 
     return (
         <div className="section">
             <h3>{biere.nom}</h3>
-            <hr/>
-            <img className="cannette" src={require("../../assets/"+biere.asset+".png")} alt="photo d'une canette" />
-            <br/>
+            <hr />
+            <img className="cannette" src={require("../../assets/" + biere.asset + ".png")} alt="photo d'une canette" />
+            <br />
             <p>Informations :</p>
             <div className="beerInfo">
                 <div className="beerDetails">
