@@ -12,7 +12,7 @@ function BeerCard({}) {
 
     const fetchSaveurs = async () => {
         try {
-            const response = await fetch(`${url}${biere.saveurs[0]}`);
+            const response = await fetch(`${url}${biere.saveurs[0]}`,{mode: "cors"});
             const data = await response.json();
             setSaveurs(data);
         } catch (error) {
@@ -22,7 +22,7 @@ function BeerCard({}) {
 
     const fetchcouleurs = async () => {
         try {
-            const response = await fetch(`${url}${biere.couleur}`);
+            const response = await fetch(`${url}${biere.couleur}`,{mode: "cors"});
             const data = await response.json();
             setCouleurs(data);
         } catch (error) {

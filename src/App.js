@@ -13,7 +13,7 @@ function App() {
       useEffect(() => {
         const fetchBieres = async () => {
             try {
-                const response = await fetch('https://meetmybeerapi.osc-fr1.scalingo.io/api/bieres');
+                const response = await fetch('https://meetmybeerapi.osc-fr1.scalingo.io/api/bieres',{mode: "cors"});
                 const data = await response.json();
                 setBieres(data);
             } catch (error) {
@@ -27,7 +27,7 @@ function App() {
 
     const fetchSaveurs = async (url,biere) => {
         try {
-            const response = await fetch(`${url}${biere.saveurs[0]}`);
+            const response = await fetch(`${url}${biere.saveurs[0]}`,{mode: "cors"});
             const data = await response.json();
             biere['saveur'] = data.libelle
         } catch (error) {
@@ -37,7 +37,7 @@ function App() {
 
     const fetchcouleurs = async (url,biere) => {
         try {
-            const response = await fetch(`${url}${biere.couleur}`);
+            const response = await fetch(`${url}${biere.couleur}`,{mode: "cors"});
             const data = await response.json();
             biere['couleurs'] = data.libelle
         } catch (error) {

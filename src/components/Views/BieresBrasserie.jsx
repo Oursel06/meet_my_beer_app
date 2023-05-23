@@ -6,7 +6,7 @@ const BieresBrasserie = ({ bieres }) => {
 
     useEffect(() => {
         const fetchBieres = async () => {
-            const promises = bieres.map(biereUrl => fetch(`https://meetmybeerapi.osc-fr1.scalingo.io${biereUrl}`).then(response => response.json()));
+            const promises = bieres.map(biereUrl => fetch(`https://meetmybeerapi.osc-fr1.scalingo.io${biereUrl}`,{mode: "cors"}).then(response => response.json()));
             const biereData = await Promise.all(promises);
             setBiereList(biereData);
         };
